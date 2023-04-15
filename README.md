@@ -11,3 +11,7 @@ cmd + shift - p : echo 'gsioyek' | nc 127.0.0.1 1337
 cmd + shift - j : echo 'c' | nc 127.0.0.1 1337
 cmd + shift - m : echo 'r' | nc 127.0.0.1 1337
 ```
+
+- `r` forces the server to update its knowledge of open windows and their information
+- `gAPPNAME` instantly jumps to an instance of that app
+- `c` cycles between open instances of the same application
