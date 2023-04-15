@@ -73,6 +73,7 @@ local function refresh()
       end
     end
     p(idset)
+    p(mq)
   end
   run('yabai', { '-m', 'query', '--windows' }, onOut)
 end
@@ -90,6 +91,7 @@ local function cycle()
   if curptr > n then
     curptr = curptr - n
   end
+  if mq[curapp][curptr] == nil then return end
   focusinfo(mq[curapp][curptr])
 end
 
@@ -102,7 +104,7 @@ local function go(app)
 end
 
 local server = net.createServer(function(client)
-  print("client connected")
+  -- print("client connected")
 
   -- Add some listenners for incoming connection
   client:on("error", function(err)
@@ -122,9 +124,9 @@ local server = net.createServer(function(client)
     client:write(data)
   end)
 
-  client:on("end", function()
-    print("client disconnected")
-  end)
+  -- client:on("end", function()
+  --   print("client disconnected")
+  -- end)
 end)
 
 -- Add error listenner for server
