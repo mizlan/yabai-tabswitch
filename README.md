@@ -1,8 +1,10 @@
 # yabai-tabswitch
 
-requires luvit, yabai, and preferably skhd
+Requires [luvit](https://luvit.io/), [yabai](https://github.com/koekeishiya/yabai), and preferably [skhd](https://github.com/koekeishiya/skhd).
+I also use [abduco](https://github.com/martanne/abduco) to have my server run
+detached from any terminal.
 
-example skhd config:
+Example skhd config:
 
 ```
 cmd + shift - return : echo 'gFirefox' | nc 127.0.0.1 1337
