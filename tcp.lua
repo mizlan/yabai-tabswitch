@@ -1,3 +1,7 @@
+-- luvit
+-- the above line is to trigger lua-language-server
+-- to prompt for configuring our environment as luvit
+
 local net = require('net')
 local childProcess = require('childprocess')
 local json = require('json')
