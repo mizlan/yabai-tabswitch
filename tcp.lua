@@ -127,13 +127,8 @@ local server = net.createServer(function(client)
     end
     client:write(data)
   end)
-
-  -- client:on("end", function()
-  --   print("client disconnected")
-  -- end)
 end)
 
--- Add error listenner for server
 server:on('error', function(err)
   if err then error(err) end
 end)
