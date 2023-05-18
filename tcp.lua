@@ -54,21 +54,24 @@ local function refresh()
   local function onOut(s)
     local data = json.parse(s)
     for i, e in ipairs(data) do
-      table.insert(mq2[e.app], { e['id'], e.space })
-      idset2[e['id']] = true
+      table.insert(mq2[e.app], { id = e.id, space = e.space })
+      idset2[e['id']] = e.space
     end
     for app, info in pairs(mq) do
       filter_inplace(info, function(e)
-        local v = idset2[e[1]]
-        idset[e[1]] = v
+        -- can be nil
+        local v = idset2[e.id]
+        idset[e.id] = v
+        -- space couldve changed
+        e.space = v
         return v
       end)
     end
     for app, info in pairs(mq2) do
       for _, inst in ipairs(info) do
-        if not idset[inst[1]] then
+        if not idset[inst.id] then
           table.insert(mq[app], inst)
-          idset[inst[1]] = true
+          idset[inst.id] = true
         end
       end
     end
@@ -79,8 +82,8 @@ local function refresh()
 end
 
 local function focusinfo(e)
-  run('yabai', { '-m', 'space', '--focus', e[2] }, function()
-    run('yabai', { '-m', 'window', '--focus', e[1] })
+  run('yabai', { '-m', 'space', '--focus', e.space }, function()
+    run('yabai', { '-m', 'window', '--focus', e.id })
   end)
 end
 
