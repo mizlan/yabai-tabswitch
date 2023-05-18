@@ -98,6 +98,18 @@ local function cycle()
   focusinfo(mq[curapp][curptr])
 end
 
+local function rotate_to_fix(arr, i)
+  for i = 1, i - 1 do
+    table.insert(arr, table.remove(arr, 1))
+  end
+end
+
+local function fix()
+  if curapp == nil then return end
+  rotate_to_fix(mq[curapp], curptr)
+  curptr = 1
+end
+
 local function go(app)
   curapp = app
   local appinfo = mq[app]
@@ -124,6 +136,8 @@ local server = net.createServer(function(client)
       cycle()
     elseif cmd == 'g' then
       go(string.sub(data, 2, -2))
+    elseif cmd == 'x' then
+      fix()
     end
     client:write(data)
   end)
