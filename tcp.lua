@@ -99,7 +99,8 @@ local function go(app)
   curapp = app
   local appinfo = mq[app]
   if appinfo == nil or #appinfo == 0 then return end
-  local e = appinfo[1]
+  curptr = 1
+  local e = appinfo[curptr]
   focusinfo(e)
 end
 
