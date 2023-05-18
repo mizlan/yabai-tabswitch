@@ -124,9 +124,6 @@ local function go(app)
 end
 
 local server = net.createServer(function(client)
-  -- print("client connected")
-
-  -- Add some listenners for incoming connection
   client:on("error", function(err)
     print("Client read error: " .. err)
     client:close()
@@ -151,4 +148,5 @@ server:on('error', function(err)
   if err then error(err) end
 end)
 
-server:listen(1337, '127.0.0.1') -- or "server:listen(1234)"
+server:listen(1337, '127.0.0.1', function()
+end)
