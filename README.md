@@ -38,7 +38,6 @@ cmd + shift - m : echo 'r' | nc 127.0.0.1 1337
 
 # fix the current instance of an application as its first jumped-to instance
 cmd + shift - k : echo 'x' | nc 127.0.0.1 1337
-
 ```
 
 - `r` forces the server to update its knowledge of open windows and their
